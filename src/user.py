@@ -18,8 +18,6 @@ class UserInteractive(WorkWithJson):
     def get_vacancies_list(keyword: str):
         """
         Получение с сайта HH списка вакансий
-        :param keyword:
-        :return:
         """
 
         hh = HH(keyword)
@@ -28,7 +26,6 @@ class UserInteractive(WorkWithJson):
     def get_vacancies_list_from_file(self) -> list[dict]:
         """
         Получение из файла списка вакансий
-        :return:
         """
 
         work_file = WorkWithJson()
@@ -41,8 +38,6 @@ class UserInteractive(WorkWithJson):
         """
         Получение заданного пользователем количества вакансий с сортировкой
         по уровню зарплат (с убыванием)
-        :param n:
-        :return:
         """
 
         vac_filter = []
@@ -55,7 +50,7 @@ class UserInteractive(WorkWithJson):
     def get_vacancy_from_keywords(self) -> list[dict]:
         """
         Получение списка вакансий по заданному ключевому слову
-        :return:
+
         """
         keywords = input("Введите ключевое слово:  ")
         print()
@@ -71,24 +66,23 @@ class UserInteractive(WorkWithJson):
         """
         Функция для взаимодействия с пользователем
         :param self:
-        :return:
         """
-        print("Hello, user")
-        user_name = input("Как ваше имя?  ")
+        user_name = input("Привет, как тебя зовут?  ")
         user = UserInteractive(user_name)
 
-        keyword = input("Введите запрос (ключевое слово для поиска вакансий на HH): ")
+        keyword = input(f"{user_name} какая вакансия тебя интересует? ")
 
         user.save_file(user.get_vacancies_list(keyword))
 
-        YesNo = input("\nФайл с вакансиями сформирован.\nУдалить файл с найденными вакансиями? "
-                      "\nЕсли удаляем, то выходим из программы!\n"
+        YesNo = input(f"{user_name} файл с вакансиями сформирован.\n"
+                      "Удалить файл с найденными вакансиями?\n"
+                      "Если удаляем, то выходим из программы!\n"
                       "(Д/д, Y/y - удаляем и выходим, Н/н, N/n - продолжаем работу): ")
         if YesNo == "Y" or YesNo == "y" or YesNo == "Д" or YesNo == "д":
             user.delete_file()
             sys.exit()
 
-        n = int(input("\nСколько вакансий вывести на экран (введите число): "))
+        n = int(input("Сколько вакансий вывести на экран, введите число: "))
         print()
 
         user.get_vacancies_list_from_file()
@@ -101,9 +95,7 @@ class UserInteractive(WorkWithJson):
         user.get_top_n_for_salary(n)
         for vacancy in user.get_top_n_for_salary(n):
             print(vacancy)
-            print()
 
         print("------------------------------------------------------------------")
         for vacancy in user.get_vacancy_from_keywords():
             print(vacancy)
-            print()

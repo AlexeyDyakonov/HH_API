@@ -23,9 +23,9 @@ class Vacancy:
         :return:
         """
         if not self.salary:
-            return 0  # "Не указана"
+            return 0
         elif not other.salary:
-            return 0  # "hi"
+            return 0
         elif self.salary < other.salary:
             return True
         else:
@@ -36,7 +36,6 @@ class Vacancy:
         """
         Метод валидации данных: если данные отстутствуют, возвращается текст "Отсутствует"
         :param data:
-        :return:
         """
         if data:
             return data
@@ -48,7 +47,6 @@ class Vacancy:
         """
         Метод создания новой пользовательской вакансии из выгруженных с HH вакансий
         :param vacancy:
-        :return:
         """
         name = vacancy.get("name")
         area = vacancy.get("area").get("name")
@@ -58,7 +56,7 @@ class Vacancy:
             else:
                 salary = 0
         else:
-            salary = 0  # "Не указана"
+            salary = 0
         url = vacancy.get("url")
         if vacancy.get("snippet").get("responsibility") is not None:
             snippet = vacancy.get("snippet").get("responsibility")
