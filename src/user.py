@@ -65,7 +65,6 @@ class UserInteractive(WorkWithJson):
     def user_interaction(self):
         """
         Функция для взаимодействия с пользователем
-        :param self:
         """
         user_name = input("Привет, как тебя зовут?  ")
         user = UserInteractive(user_name)

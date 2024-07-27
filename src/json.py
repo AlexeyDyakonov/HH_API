@@ -2,8 +2,6 @@ import json
 import os.path
 from abc import ABC, abstractmethod
 
-#from src.api import HH
-
 
 class FileWork(ABC):
     """
@@ -25,7 +23,6 @@ class FileWork(ABC):
     def save_file(self, data):
         """
         Запись файла
-        :return:
         """
         pass
 
@@ -33,7 +30,6 @@ class FileWork(ABC):
     def delete_file(self):
         """
         Удаление файла
-        :return:
         """
         pass
 
